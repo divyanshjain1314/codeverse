@@ -3,6 +3,7 @@ import AuthForm from "../../components/AuthForm";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addUsers } from "../../redux/slices/usersSlice";
+import { validateForm } from "../../utils/validation";
 
 const Signup = () => {
   const [formData, setFormData] = React.useState({
@@ -16,13 +17,17 @@ const Signup = () => {
 
   const handleSignup = (e) => {
     e.preventDefault();
-    try {
-      console.log(formData);
-      dispatch(addUsers(formData));
-      navigate("/login");
-    } catch (error) {
-      setError("Invalid email or password");
+    setError("");
+
+    const validationErrors = validateForm(formData, "signup");
+
+    if (validationErrors.length > 0) {
+      setError(validationErrors[0]);
+      return;
     }
+
+    dispatch(addUsers(formData));
+    navigate("/login");
   };
 
   return (
