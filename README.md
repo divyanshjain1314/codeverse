@@ -1,16 +1,55 @@
-# React + Vite
+# React.js Machine Task - User Management & Auth
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A responsive React.js application featuring User Registration (Signup), Authentication (Login), and Protected Routing using Redux Toolkit for state management and Redux Persist for data recovery.
 
-Currently, two official plugins are available:
+## 🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+* **User Authentication**: Secure Login and Signup flow.
+* **State Management**: Centralized store using Redux Toolkit.
+* **Persistent Storage**: User data and auth sessions persist on page refresh via Redux Persist.
+* **Protected Routes**: sensitive pages (Home) are only accessible to authenticated users.
+* **Form Validation**: Basic validation for login and signup credentials.
+* **Styling**: Styled with Tailwind CSS for a modern, clean UI.
 
-## React Compiler
+## 🛠️ Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+* **Frontend**: React.js (Vite)
+* **Routing**: React Router DOM v6
+* **State Management**: Redux Toolkit (RTK)
+* **Persistence**: Redux Persist
+* **Styling**: Tailwind CSS
 
-## Expanding the ESLint configuration
+## 📋 Installation & Setup
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+1.  **Clone the repository**:
+    ```bash
+    git clone [YOUR_GITHUB_LINK_HERE]
+    cd [PROJECT_FOLDER_NAME]
+    ```
+
+2.  **Install dependencies**:
+    ```bash
+    npm install
+    ```
+
+3.  **Start the development server**:
+    ```bash
+    npm run dev
+    ```
+
+4.  **Build for production**:
+    ```bash
+    npm run build
+    ```
+
+## 🏗️ Project Structure
+
+```text
+src/
+├── components/        # Reusable components (AuthForm, ProtectedRoute)
+├── pages/             # Page components (Home, Login, Signup)
+├── redux/             # Redux Store, Slices, and Persist config
+│   ├── slices/        # Auth and User slices
+│   └── store.js       # Store configuration
+├── App.jsx            # Routing and Main App logic
+└── main.jsx           # Entry point with Provider & PersistGate
