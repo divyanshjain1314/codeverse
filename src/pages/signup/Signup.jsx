@@ -11,6 +11,7 @@ const Signup = () => {
     email: "",
     password: "",
   });
+  const allUsers = useSelector((state) => state.users.value.data) || [];
   const [error, setError] = React.useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -18,7 +19,11 @@ const Signup = () => {
   const handleSignup = (e) => {
     e.preventDefault();
     setError("");
-
+    const userExists = allUsers.some((u) => u.email === formData.email);
+    if (userExists) {
+      setError("An account with this email already exists.");
+      return;
+    }
     const validationErrors = validateForm(formData, "signup");
 
     if (validationErrors.length > 0) {
