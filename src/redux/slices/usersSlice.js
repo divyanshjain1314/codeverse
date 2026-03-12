@@ -11,6 +11,7 @@ export const usersSlice = createSlice({
   initialState,
   reducers: {
     addUsers: (state, action) => {
+      const { email } = action.payload;
       const isExisting = state.value.data.some((user) => user.email === email);
 
       if (!isExisting) {
